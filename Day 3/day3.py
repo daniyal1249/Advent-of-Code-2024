@@ -51,19 +51,25 @@ def parse_tuple(string):
         
     return int(nums[0]), int(nums[1])
 
-with open('day3_input.txt', 'r') as f:
+def part1(file):
+    total_sum = 0
+    for line in f:
+        pairs = extract_tuples(line)
+        for pair in pairs:
+            x, y = parse_tuple(pair)
+            total_sum += (x * y)
+    return total_sum
+
+def part2(file):
     total_sum = 0
     pairs = enabled_tuples(f.read())
     for pair in pairs:
         x, y = parse_tuple(pair)
         total_sum += (x * y)
+    return total_sum
 
-# with open('day3_input.txt', 'r') as f:
-#     total_sum = 0
-#     for line in f:
-#         pairs = extract_tuples(line)
-#         for pair in pairs:
-#             x, y = parse_tuple(pair)
-#             total_sum += (x * y)
-
-print(total_sum)
+if __name__ == '__main__':
+    with open('day3_input.txt', 'r') as f:
+        print(part1(f))
+    with open('day3_input.txt', 'r') as f:
+        print(part2(f))

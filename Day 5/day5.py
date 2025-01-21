@@ -33,10 +33,27 @@ def order_pages(pages, rules):
         ordered_pages[idx] = page
     return ordered_pages
 
-rules = extract_rules('day5_input.txt')
-updates = False
+def part1(file):
+    rules = extract_rules('day5_input.txt')
+    updates = False
 
-with open('day5_input.txt', 'r') as f:
+    total_sum = 0
+    for line in f:
+        pages = line.strip()
+        if not pages:
+            updates = True
+            continue
+
+        if updates:
+            pages = [int(page) for page in pages.split(',')]
+            if is_ordered(pages, rules):
+                total_sum += pages[(len(pages) - 1) // 2]
+    return total_sum
+
+def part2(file):
+    rules = extract_rules('day5_input.txt')
+    updates = False
+    
     total_sum = 0
     for line in f:
         pages = line.strip()
@@ -49,18 +66,10 @@ with open('day5_input.txt', 'r') as f:
             if not is_ordered(pages, rules):
                 pages = order_pages(pages, rules)
                 total_sum += pages[(len(pages) - 1) // 2]
+    return total_sum
 
-# with open('day5_input.txt', 'r') as f:
-#     total_sum = 0
-#     for line in f:
-#         pages = line.strip()
-#         if not pages:
-#             updates = True
-#             continue
-
-#         if updates:
-#             pages = [int(page) for page in pages.split(',')]
-#             if is_ordered(pages, rules):
-#                 total_sum += pages[(len(pages) - 1) // 2]
-
-print(total_sum)
+if __name__ == '__main__':
+    with open('day5_input.txt', 'r') as f:
+        print(part1(f))
+    with open('day5_input.txt', 'r') as f:
+        print(part2(f))

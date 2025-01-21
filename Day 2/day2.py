@@ -12,9 +12,18 @@ def is_safe(lst):
                 return False
     return True
 
-with open('day2_input.txt', 'r') as f:
+def part1(file):
     count = 0
-    for line in f:
+    for line in file:
+        lst = str_to_lst(line.strip())
+        if is_safe(lst):
+            count += 1
+            continue
+    return count
+
+def part2(file):
+    count = 0
+    for line in file:
         lst = str_to_lst(line.strip())
         if is_safe(lst):
             count += 1
@@ -23,5 +32,10 @@ with open('day2_input.txt', 'r') as f:
             if is_safe(lst[:i] + lst[i+1:]):
                 count += 1
                 break
+    return count
 
-print(count)
+if __name__ == '__main__':
+    with open('day2_input.txt', 'r') as f:
+        print(part1(f))
+    with open('day2_input.txt', 'r') as f:
+        print(part2(f))

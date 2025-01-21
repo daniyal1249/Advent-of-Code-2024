@@ -43,12 +43,20 @@ class Map:
                 positions += 1 if item in Map.guard_dict else 0
         return positions
 
-with open('day6_input.txt', 'r') as f:
+def part1(file):
     array = [list(row.strip()) for row in f.readlines()]
     guard_map = Map(array)
     while True:
         move_status = guard_map.move_guard()
         if move_status == 'exit':
             break
-    
-print(guard_map.get_positions())
+    return guard_map.get_positions()
+
+def part2(file):
+    pass
+
+if __name__ == '__main__':
+    with open('day6_input.txt', 'r') as f:
+        print(part1(f))
+    with open('day6_input.txt', 'r') as f:
+        print(part2(f))

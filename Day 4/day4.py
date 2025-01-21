@@ -44,24 +44,28 @@ def is_x(word, array, idx):
             return True
     return False
 
-with open('day4_input.txt', 'r') as f:
+def part1(file):
+    array = [list(line.strip()) for line in f.readlines()]  # each line must end in \n
+    array = extend_array(array, 3)
+
+    count = 0
+    for i, row in enumerate(array):
+        for j in range(len(row)):
+            count += count_word('XMAS', array, (i, j))
+    return count
+
+def part2(file):
     array = [list(line.strip()) for line in f.readlines()]  # each line must end in \n
     array = extend_array(array, 2)
-    print(array)
 
     count = 0
     for i, row in enumerate(array):
         for j in range(len(row)):
             count += 1 if is_x('MAS', array, (i, j)) else 0
-
-# with open('day4_input.txt', 'r') as f:
-#     array = [list(line.strip()) for line in f.readlines()]  # each line must end in \n
-#     array = extend_array(array, 3)
-#     print(array)
-
-#     count = 0
-#     for i, row in enumerate(array):
-#         for j in range(len(row)):
-#             count += count_word('XMAS', array, (i, j))
+    return count
     
-print(count)
+if __name__ == '__main__':
+    with open('day4_input.txt', 'r') as f:
+        print(part1(f))
+    with open('day4_input.txt', 'r') as f:
+        print(part2(f))
