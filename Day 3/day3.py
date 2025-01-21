@@ -53,7 +53,7 @@ def parse_tuple(string):
 
 def part1(file):
     total_sum = 0
-    for line in f:
+    for line in file:
         pairs = extract_tuples(line)
         for pair in pairs:
             x, y = parse_tuple(pair)
@@ -62,7 +62,7 @@ def part1(file):
 
 def part2(file):
     total_sum = 0
-    pairs = enabled_tuples(f.read())
+    pairs = enabled_tuples(file.read())
     for pair in pairs:
         x, y = parse_tuple(pair)
         total_sum += (x * y)

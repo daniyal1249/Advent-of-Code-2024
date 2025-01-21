@@ -44,7 +44,7 @@ class Map:
         return positions
 
 def part1(file):
-    array = [list(row.strip()) for row in f.readlines()]
+    array = [list(row.strip()) for row in file.readlines()]
     guard_map = Map(array)
     while True:
         move_status = guard_map.move_guard()

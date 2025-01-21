@@ -1,11 +1,11 @@
-def extract_rules(filename):
-    with open(filename, 'r') as f:
-        rules = set()
-        for line in f:
-            rule = line.strip()
-            if not rule:
-                break
-            rules.add(tuple([int(i) for i in line.split('|')]))
+def extract_rules(file):
+    rules = set()
+    for line in file:
+        rule = line.strip()
+        if not rule:
+            break
+        rules.add(tuple([int(i) for i in line.split('|')]))
+    f.seek(0)
     return rules
 
 def is_ordered(pages, rules):
@@ -34,11 +34,11 @@ def order_pages(pages, rules):
     return ordered_pages
 
 def part1(file):
-    rules = extract_rules('day5_input.txt')
+    rules = extract_rules(file)
     updates = False
 
     total_sum = 0
-    for line in f:
+    for line in file:
         pages = line.strip()
         if not pages:
             updates = True
@@ -51,11 +51,11 @@ def part1(file):
     return total_sum
 
 def part2(file):
-    rules = extract_rules('day5_input.txt')
+    rules = extract_rules(file)
     updates = False
     
     total_sum = 0
-    for line in f:
+    for line in file:
         pages = line.strip()
         if not pages:
             updates = True

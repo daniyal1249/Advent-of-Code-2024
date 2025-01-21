@@ -45,7 +45,7 @@ def is_x(word, array, idx):
     return False
 
 def part1(file):
-    array = [list(line.strip()) for line in f.readlines()]  # each line must end in \n
+    array = [list(line.strip()) for line in file.readlines()]  # each line must end in \n
     array = extend_array(array, 3)
 
     count = 0
@@ -55,7 +55,7 @@ def part1(file):
     return count
 
 def part2(file):
-    array = [list(line.strip()) for line in f.readlines()]  # each line must end in \n
+    array = [list(line.strip()) for line in file.readlines()]  # each line must end in \n
     array = extend_array(array, 2)
 
     count = 0
